@@ -1,6 +1,7 @@
 FROM rust:latest
 WORKDIR /pj
 COPY . .
-RUN cargo install
+RUN cargo build --release
 ENV PORT 8080
-CMD ["cloudrun-1"]
+EXPOSE 8080
+ENTRYPOINT [ "target/release/cloudrun-1" ]
