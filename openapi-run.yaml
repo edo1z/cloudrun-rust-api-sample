@@ -1,0 +1,49 @@
+swagger: '2.0'
+info:
+  title: Cloudrun-1
+  description: Sample API on Cloud Endpoints with a Cloud Run backend
+  version: 1.0.0
+host: cloudrun-1-endpoint-mhj2y6qx4a-an.a.run.app
+schemes:
+  - https
+produces:
+  - application/json
+x-google-backend:
+  address: https://cloudrun-1-mhj2y6qx4a-an.a.run.app/
+  protocol: h2
+paths:
+  /hello:
+    get:
+      summary: get "Hello world!"
+      operationId: hello
+      responses:
+        '200':
+          description: return "Hello world!"
+          schema:
+            type: string
+  /ping:
+    get:
+      summary: ping pong
+      operationId: ping
+      responses:
+        '200':
+          description: return "pong"
+          schema:
+            type: string
+  /profile:
+    get:
+      summary: get profile (name and age)
+      operationId: profile
+      responses:
+        '200':
+          description: return user's name and age
+          schema:
+            type: object
+            properties:
+              name: 
+                type: string
+                example: "taro"
+              age:
+                type: integer
+                format: u16
+                example: 30
