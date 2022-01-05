@@ -74,7 +74,7 @@ ENTRYPOINT [ "target/release/cloudrun-1" ]
 ### デプロイ
 
 ```shell
-> gcloud run deploy cloudrun-1 --image gcr.io/${PROJECT-ID}/${SERVICE_NAME}
+> gcloud run deploy ${SERVICE_NAME} --image gcr.io/${PROJECT-ID}/${SERVICE_NAME}
 ```
 
 ### 参考: deproyスクリプト
@@ -181,5 +181,5 @@ rm tmp_image_tag
 - Cloud RunはEndpoint経由でのみアクセスできるようにします。
 
 ```shell
-> gcloud run deploy cloudrun-1 --image gcr.io/${PROJECT-ID}/cloudrun-1 --no-allow-unauthenticated
+> gcloud run deploy ${SERVICE_NAME} --image gcr.io/${PROJECT-ID}/${SERVICE_NAME} --no-allow-unauthenticated
 ```
