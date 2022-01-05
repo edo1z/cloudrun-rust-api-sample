@@ -42,11 +42,11 @@ ENTRYPOINT [ "target/release/cloudrun-1" ]
 ### ビルド（イメージの作成）
 
 ```shell
-> docker build -t asia.gcr.io/${PROJECT-ID}/${SERVICE_NAME} .
+> docker build -t gcr.io/${PROJECT-ID}/${SERVICE_NAME} .
 ```
 
 #### 注意
-- `asia.gcr.io` は、Container Registryで設定しているドメインによって変える。
+- `gcr.io` は、Container Registryで設定しているドメインによって変える。
 - `${PROJECT-ID}`は、自分のプロジェクトIDに変える。
 - `${SERVICE_NAME}`は、自分のサービス名に変える。
 
@@ -59,7 +59,7 @@ ENTRYPOINT [ "target/release/cloudrun-1" ]
 ### イメージをプッシュ
 
 ```shell
-> docker push asia.gcr.io/${PROJECT-ID}/${SERVICE_NAME}
+> docker push gcr.io/${PROJECT-ID}/${SERVICE_NAME}
 ```
 
 #### 注意
@@ -74,7 +74,7 @@ ENTRYPOINT [ "target/release/cloudrun-1" ]
 ### デプロイ
 
 ```shell
-> gcloud run deploy cloudrun-1 --image asia.gcr.io/${PROJECT-ID}/${SERVICE_NAME}
+> gcloud run deploy cloudrun-1 --image gcr.io/${PROJECT-ID}/${SERVICE_NAME}
 ```
 
 ### 参考: deproyスクリプト
@@ -100,10 +100,10 @@ export ESP_HOSTNAME=*****
 #### scripts/deploy.sh
 
 ```deploy.sh
-docker build -t asia.gcr.io/${PROJECT_ID}/${SERVICE_NAME} .
-docker push asia.gcr.io/${PROJECT_ID}/${SERVICE_NAME}
+docker build -t gcr.io/${PROJECT_ID}/${SERVICE_NAME} .
+docker push gcr.io/${PROJECT_ID}/${SERVICE_NAME}
 gcloud run deploy ${SERVICE_NAME} \
-  --image asia.gcr.io/${PROJECT_ID}/${SERVICE_NAME} \
+  --image gcr.io/${PROJECT_ID}/${SERVICE_NAME} \
   --no-allow-unauthenticated
 ```
 
@@ -181,5 +181,5 @@ rm tmp_image_tag
 - Cloud RunはEndpoint経由でのみアクセスできるようにします。
 
 ```shell
-> gcloud run deploy cloudrun-1 --image asia.gcr.io/${PROJECT-ID}/cloudrun-1 --no-allow-unauthenticated
+> gcloud run deploy cloudrun-1 --image gcr.io/${PROJECT-ID}/cloudrun-1 --no-allow-unauthenticated
 ```
