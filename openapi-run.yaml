@@ -11,6 +11,14 @@ produces:
 x-google-backend:
   address: https://cloudrun-1-mhj2y6qx4a-an.a.run.app/
   protocol: h2
+securityDefinitions:
+  firebase:
+    authorizationUrl: ""
+    flow: "implicit"
+    type: "oauth2"
+    x-google-issuer: "https://securetoken.google.com/analog-hull-337103"
+    x-google-jwks_uri: "https://www.googleapis.com/service_accounts/v1/metadata/x509/securetoken@system.gserviceaccount.com"
+    x-google-audiences: "analog-hull-337103"
 paths:
   /hello:
     get:
@@ -47,3 +55,5 @@ paths:
                 type: integer
                 format: u16
                 example: 30
+      security:
+        - firebase: []
