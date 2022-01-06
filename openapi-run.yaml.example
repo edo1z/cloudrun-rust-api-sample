@@ -1,24 +1,24 @@
 swagger: '2.0'
 info:
-  title: Cloudrun-1
-  description: Sample API on Cloud Endpoints with a Cloud Run backend
+  title: ${TITLE}
+  description: ${DESCRIPTION}
   version: 1.0.0
-host: cloudrun-1-endpoint-mhj2y6qx4a-an.a.run.app
+host: ${ESP_HOSTNAME}
 schemes:
   - https
 produces:
   - application/json
 x-google-backend:
-  address: https://cloudrun-1-mhj2y6qx4a-an.a.run.app/
+  address: ${HOSTNAME}
   protocol: h2
 securityDefinitions:
   firebase:
     authorizationUrl: ""
     flow: "implicit"
     type: "oauth2"
-    x-google-issuer: "https://securetoken.google.com/analog-hull-337103"
+    x-google-issuer: "https://securetoken.google.com/${ESP_PROJECT_ID}"
     x-google-jwks_uri: "https://www.googleapis.com/service_accounts/v1/metadata/x509/securetoken@system.gserviceaccount.com"
-    x-google-audiences: "analog-hull-337103"
+    x-google-audiences: "${ESP_PROJECT_ID}"
 paths:
   /hello:
     get:
